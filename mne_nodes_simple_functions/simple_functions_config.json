@@ -1,0 +1,171 @@
+{
+        "filter_raw": {
+            "inputs": {
+                "raw": {
+                    "accepted_ports": [
+                        "raw"
+                    ],
+                    "optional": false
+                }
+            },
+            "parameters": {
+                "l_freq": {
+                    "description": "The low cutoff frequency. If None, no high-pass filtering is applied.",
+                    "none_select": true,
+                    "default": null,
+                    "gui": "FloatGui"
+                },
+                "h_freq": {
+                    "description": "The high cutoff frequency. If None, no low-pass filtering is applied.",
+                    "none_select": true,
+                    "default": null,
+                    "gui": "FloatGui"
+                }
+            },
+            "outputs": {
+                "raw": {
+                    "accepted_ports": [
+                        "raw"
+                    ]
+                }
+            },
+            "target": "file",
+            "category": "simple_functions",
+            "sub_category": null,
+            "description": "Filter raw data.",
+            "module_name": null,
+            "class_name": null
+        },
+        "find_events": {
+            "inputs": {
+                "raw": {
+                    "accepted_ports": [
+                        "raw"
+                    ],
+                    "optional": false
+                }
+            },
+            "parameters": {},
+            "outputs": {
+                "events": {
+                    "accepted_ports": [
+                        "events"
+                    ]
+                }
+            },
+            "target": "file",
+            "category": "simple_functions",
+            "sub_category": null,
+            "description": "Find events in raw data.",
+            "module_name": null,
+            "class_name": null
+        },
+        "make_epochs": {
+            "inputs": {
+                "raw": {
+                    "accepted_ports": [
+                        "raw"
+                    ],
+                    "optional": false
+                },
+                "events": {
+                    "accepted_ports": [
+                        "events"
+                    ],
+                    "optional": false
+                },
+                "event_id": {
+                    "accepted_ports": [
+                        "event_id"
+                    ],
+                    "optional": false
+                }
+            },
+            "parameters": {
+                "tmin": {
+                    "description": "The start time before each event. If None, no baseline correction is applied.",
+                    "default": -0.5,
+                    "gui": "FloatGui"
+                },
+                "tmax": {
+                    "description": "The end time after each event.",
+                    "default": 1,
+                    "gui": "FloatGui"
+                },
+                "baseline": {
+                    "description": "The time interval to use for baseline correction. If None, no baseline correction is applied.",
+                    "none_select": true,
+                    "default": {"tuple_type": [-0.5, 0]},
+                    "gui": "DualTupleGui"
+                }
+            },
+            "outputs": {
+                "epochs": {
+                    "accepted_ports": [
+                        "epochs"
+                    ]
+                }
+            },
+            "target": "file",
+            "category": "simple_functions",
+            "sub_category": null,
+            "description": "Create epochs from raw data.",
+            "module_name": null,
+            "class_name": null
+        },
+        "compute_evoked": {
+            "inputs": {
+                "epochs": {
+                    "accepted_ports": [
+                        "epochs"
+                    ],
+                    "optional": false
+                }
+            },
+            "parameters": {
+                "condition": {
+                    "description": "The condition to compute the evoked response for. If None, the first condition will be used.",
+                    "none_select": true,
+                    "default": null,
+                    "gui": "StringGui"
+                }
+            },
+            "outputs": {
+                "evoked": {
+                    "accepted_ports": [
+                        "evoked"
+                    ]
+                }
+            },
+            "target": "file",
+            "category": "simple_functions",
+            "sub_category": null,
+            "description": "Compute the evoked response for a specific condition.",
+            "module_name": null,
+            "class_name": null
+        },
+        "plot_evoked": {
+            "inputs": {
+                "evoked": {
+                    "accepted_ports": [
+                        "evoked"
+                    ],
+                    "optional": false
+                }
+            },
+            "parameters": {},
+            "outputs": {
+                "fig": {
+                    "accepted_ports": [
+                        "fig"
+                    ]
+                }
+            },
+            "target": "file",
+            "category": "simple_functions",
+            "sub_category": null,
+            "description": "Plot the evoked response.",
+            "module_name": null,
+            "class_name": null
+        }
+}
