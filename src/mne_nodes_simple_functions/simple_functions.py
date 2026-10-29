@@ -85,18 +85,13 @@ def compute_evoked(epochs, condition: str | None = None):
         evoked = epochs[condition].average()
     return evoked
 
-def plot_evoked(evoked):
-    """Plot the evoked response.
-
-    Parameters
-    ----------
-    evoked : mne.Evoked
-        The evoked response to plot.
-
-    Returns
-    -------
-    fig : matplotlib.figure.Figure
-        The figure containing the plot.
-    """
-    fig = evoked.plot()
-    return fig
+def compute_forward_solution(info, trans, subject):
+	from mne import setup_source_space, make_bem_model, make_bem_solution, make_forward_solution
+	from mne.bem import make_watershed_bem
+	
+	make_watershed_bem(subject)
+	src = setup_source_space(subject)
+	bem_model = make_bem_model(subject)
+	bem_solution = make_bem_solution(bem_model)
+	fwd = make_forward_solution(info, trans, src, bem_solution)
+	return fwd
