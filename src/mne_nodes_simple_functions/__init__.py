@@ -1,3 +1,5 @@
+"""Simple function plugin registration and packaged resources."""
+
 from pathlib import Path
 
 
