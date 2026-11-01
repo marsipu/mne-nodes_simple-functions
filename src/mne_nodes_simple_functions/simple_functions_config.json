@@ -36,30 +36,6 @@
         "module_name": null,
         "class_name": null
     },
-    "find_events": {
-        "inputs": {
-            "raw": {
-                "accepted_ports": [
-                    "raw"
-                ],
-                "optional": false
-            }
-        },
-        "parameters": {},
-        "outputs": {
-            "events": {
-                "accepted_ports": [
-                    "events"
-                ]
-            }
-        },
-        "target": "file",
-        "category": "simple_functions",
-        "sub_category": null,
-        "description": "Find events in raw data.",
-        "module_name": null,
-        "class_name": null
-    },
     "make_epochs": {
         "inputs": {
             "raw": {
@@ -177,6 +153,30 @@
         "category": "simple_functions",
         "sub_category": null,
         "description": "",
+        "module_name": null,
+        "class_name": null
+    },
+    "get_events": {
+        "inputs": {
+            "raw": {
+                "accepted_ports": [
+                    "raw"
+                ],
+                "optional": false
+            }
+        },
+        "parameters": {},
+        "outputs": {
+            "events": {
+                "accepted_ports": [
+                    "events"
+                ]
+            }
+        },
+        "target": "file",
+        "category": "simple_functions",
+        "sub_category": null,
+        "description": "Find events in raw data.",
         "module_name": null,
         "class_name": null
     }

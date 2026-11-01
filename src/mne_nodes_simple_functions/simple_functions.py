@@ -18,7 +18,7 @@ def filter_raw(raw, l_freq=None, h_freq=None):
     raw = raw.filter(l_freq=l_freq, h_freq=h_freq)
     return raw
 
-def find_events(raw):
+def get_events(raw):
     """Find events in raw data.
 
     Parameters
@@ -34,6 +34,8 @@ def find_events(raw):
     from mne import find_events
     events = find_events(raw)
     return events
+
+find_events = get_events
 
 def make_epochs(raw, events=None, event_id=None, tmin=-0.5, tmax=1, baseline=None):
     """Create epochs from raw data.
