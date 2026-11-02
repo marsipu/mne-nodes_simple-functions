@@ -179,5 +179,223 @@
         "description": "Find events in raw data.",
         "module_name": null,
         "class_name": null
+    },
+    "make_noise_covariance_raw": {
+        "inputs": {
+            "raw": {
+                "accepted_ports": [
+                    "raw"
+                ],
+                "optional": false
+            }
+        },
+        "parameters": {},
+        "outputs": {
+            "noise_cov": {
+                "accepted_ports": [
+                    "noise_cov"
+                ]
+            }
+        },
+        "target": "file",
+        "category": "simple_functions",
+        "sub_category": null,
+        "description": "",
+        "module_name": null,
+        "class_name": null,
+        "uses_freesurfer": false
+    },
+    "make_noise_covariance_epochs": {
+        "inputs": {
+            "epochs": {
+                "accepted_ports": [
+                    "epochs"
+                ],
+                "optional": false
+            }
+        },
+        "parameters": {},
+        "outputs": {
+            "noise_cov": {
+                "accepted_ports": [
+                    "noise_cov"
+                ]
+            }
+        },
+        "target": "file",
+        "category": "simple_functions",
+        "sub_category": null,
+        "description": "",
+        "module_name": null,
+        "class_name": null,
+        "uses_freesurfer": false
+    },
+    "get_forward_solution": {
+        "inputs": {
+            "info": {
+                "accepted_ports": [
+                    "info"
+                ],
+                "optional": false
+            },
+            "trans": {
+                "accepted_ports": [
+                    "trans"
+                ],
+                "optional": false
+            },
+            "subject": {
+                "accepted_ports": [
+                    "subject"
+                ],
+                "optional": false
+            }
+        },
+        "parameters": {},
+        "outputs": {
+            "fwd": {
+                "accepted_ports": [
+                    "fwd"
+                ]
+            }
+        },
+        "target": "file",
+        "category": "simple_functions",
+        "sub_category": null,
+        "description": "",
+        "module_name": null,
+        "class_name": null,
+        "uses_freesurfer": false
+    },
+    "get_inverse_operator": {
+        "inputs": {
+            "info": {
+                "accepted_ports": [
+                    "info"
+                ],
+                "optional": false
+            },
+            "fwd": {
+                "accepted_ports": [
+                    "fwd"
+                ],
+                "optional": false
+            },
+            "noise_cov": {
+                "accepted_ports": [
+                    "noise_cov"
+                ],
+                "optional": false
+            }
+        },
+        "parameters": {},
+        "outputs": {
+            "inv": {
+                "accepted_ports": [
+                    "inv"
+                ]
+            }
+        },
+        "target": "file",
+        "category": "simple_functions",
+        "sub_category": null,
+        "description": "",
+        "module_name": null,
+        "class_name": null,
+        "uses_freesurfer": false
+    },
+    "make_source_estimate": {
+        "inputs": {
+            "evoked": {
+                "accepted_ports": [
+                    "evoked"
+                ],
+                "optional": false
+            },
+            "inv": {
+                "accepted_ports": [
+                    "inv"
+                ],
+                "optional": false
+            }
+        },
+        "parameters": {
+            "method": {
+                "description": "",
+                "default": "dSPM",
+                "gui": "ComboGui",
+                "editable": false,
+                "options": [
+                    "MNE",
+                    "dSPM",
+                    "eLORETA",
+                    "sLORETA"
+                ]
+            }
+        },
+        "outputs": {
+            "stc": {
+                "accepted_ports": [
+                    "stc"
+                ]
+            }
+        },
+        "target": "file",
+        "category": "simple_functions",
+        "sub_category": null,
+        "description": "",
+        "module_name": null,
+        "class_name": null,
+        "uses_freesurfer": false
+    },
+    "plot_evoked": {
+        "inputs": {
+            "evoked": {
+                "accepted_ports": [
+                    "evoked"
+                ],
+                "optional": false
+            }
+        },
+        "parameters": {},
+        "outputs": {
+            "fig": {
+                "accepted_ports": [
+                    "fig"
+                ]
+            }
+        },
+        "target": "file",
+        "category": "simple_functions",
+        "sub_category": null,
+        "description": "",
+        "module_name": null,
+        "class_name": null,
+        "uses_freesurfer": false
+    },
+    "plot_source_estimate": {
+        "inputs": {
+            "stc": {
+                "accepted_ports": [
+                    "stc"
+                ],
+                "optional": false
+            }
+        },
+        "parameters": {},
+        "outputs": {
+            "fig": {
+                "accepted_ports": [
+                    "fig"
+                ]
+            }
+        },
+        "target": "file",
+        "category": "simple_functions",
+        "sub_category": null,
+        "description": "",
+        "module_name": null,
+        "class_name": null,
+        "uses_freesurfer": false
     }
 }

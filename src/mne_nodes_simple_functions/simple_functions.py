@@ -87,7 +87,21 @@ def compute_evoked(epochs, condition: str | None = None):
         evoked = epochs[condition].average()
     return evoked
 
-def compute_forward_solution(info, trans, subject):
+def plot_evoked(evoked):
+    fig = evoked.plot()
+    return fig
+
+def make_noise_covariance_raw(raw):
+    from mne import compute_raw_covariance
+    noise_cov = compute_raw_covariance(raw)
+    return noise_cov
+
+def make_noise_covariance_epochs(epochs):
+    from mne import compute_covariance
+    noise_cov = compute_covariance(epochs)
+    return noise_cov
+
+def get_forward_solution(info, trans, subject):
 	from mne import setup_source_space, make_bem_model, make_bem_solution, make_forward_solution
 	from mne.bem import make_watershed_bem
 	
@@ -97,3 +111,17 @@ def compute_forward_solution(info, trans, subject):
 	bem_solution = make_bem_solution(bem_model)
 	fwd = make_forward_solution(info, trans, src, bem_solution)
 	return fwd
+
+def get_inverse_operator(info, fwd, noise_cov):
+    from mne.minimum_norm import make_inverse_operator
+    inv = make_inverse_operator(info, fwd, noise_cov)
+    return inv
+
+def make_source_estimate(evoked, inv, method='dSPM'):
+    from mne.minimum_norm import apply_inverse
+    stc = apply_inverse(evoked, inv, lambda2=1.0 / 9.0, method=method)
+    return stc
+
+def plot_source_estimate(stc):
+    fig = stc.plot()
+    return fig
