@@ -1,4 +1,23 @@
 {
+    "average_reference_raw": {
+        "inputs": {
+            "raw": {
+                "accepted_ports": ["raw"],
+                "optional": false
+            }
+        },
+        "parameters": {},
+        "outputs": {
+            "raw": {"accepted_ports": ["raw"]},
+            "info": {"accepted_ports": ["info"]}
+        },
+        "target": "file",
+        "category": "simple_functions",
+        "sub_category": null,
+        "description": "Add an EEG average-reference projector before epoching and source modeling.",
+        "module_name": null,
+        "class_name": null
+    },
     "filter_raw": {
         "inputs": {
             "raw": {
@@ -120,42 +139,6 @@
         "module_name": null,
         "class_name": null
     },
-    "compute_forward_solution": {
-        "inputs": {
-            "info": {
-                "accepted_ports": [
-                    "info"
-                ],
-                "optional": false
-            },
-            "trans": {
-                "accepted_ports": [
-                    "trans"
-                ],
-                "optional": false
-            },
-            "subject": {
-                "accepted_ports": [
-                    "subject"
-                ],
-                "optional": false
-            }
-        },
-        "parameters": {},
-        "outputs": {
-            "fwd": {
-                "accepted_ports": [
-                    "fwd"
-                ]
-            }
-        },
-        "target": "file",
-        "category": "simple_functions",
-        "sub_category": null,
-        "description": "",
-        "module_name": null,
-        "class_name": null
-    },
     "get_events": {
         "inputs": {
             "raw": {
@@ -265,7 +248,7 @@
         "description": "",
         "module_name": null,
         "class_name": null,
-        "uses_freesurfer": false
+        "uses_freesurfer": true
     },
     "get_inverse_operator": {
         "inputs": {

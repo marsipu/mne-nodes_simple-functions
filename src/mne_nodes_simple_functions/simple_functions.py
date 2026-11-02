@@ -1,3 +1,14 @@
+def average_reference_raw(raw):
+    """Add an EEG average-reference projector and return raw data and its info.
+
+    The raw object is updated in place. Apply projections during epoching or
+    inverse modeling so data, covariance and inverse use the same reference.
+    """
+    raw.set_eeg_reference(ref_channels="average", projection=True)
+    info = raw.info
+    return raw, info
+
+
 def filter_raw(raw, l_freq=None, h_freq=None):
     """Filter raw data.
 
@@ -102,15 +113,19 @@ def make_noise_covariance_epochs(epochs):
     return noise_cov
 
 def get_forward_solution(info, trans, subject):
-	from mne import setup_source_space, make_bem_model, make_bem_solution, make_forward_solution
-	from mne.bem import make_watershed_bem
-	
-	make_watershed_bem(subject)
-	src = setup_source_space(subject)
-	bem_model = make_bem_model(subject)
-	bem_solution = make_bem_solution(bem_model)
-	fwd = make_forward_solution(info, trans, src, bem_solution)
-	return fwd
+    """Compute a forward model, reusing existing watershed BEM surfaces."""
+    from mne import (
+        make_bem_model,
+        make_bem_solution,
+        make_forward_solution,
+        setup_source_space,
+    )
+
+    src = setup_source_space(subject)
+    bem_model = make_bem_model(subject)
+    bem_solution = make_bem_solution(bem_model)
+    fwd = make_forward_solution(info, trans, src, bem_solution)
+    return fwd
 
 def get_inverse_operator(info, fwd, noise_cov):
     from mne.minimum_norm import make_inverse_operator

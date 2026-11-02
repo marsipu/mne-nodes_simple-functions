@@ -11,6 +11,16 @@ For local loading without installation, select
 `src/mne_nodes_simple_functions/simple_functions_config.json` using
 **Plugins > Load Plugin from Path**.
 
+## EEG inverse modeling
+
+For combined MEG/EEG source modeling, insert `average_reference_raw` before
+epoching. Connect its `raw` output to the data-processing nodes and its `info`
+output to forward/inverse modeling. It adds an average-reference projector in
+place without immediately changing samples. Epoching and inverse modeling apply
+the projector consistently; a custom EEG reference alone is not sufficient.
+`get_forward_solution` reuses a complete set of existing BEM surfaces rather
+than rerunning watershed or overwriting subject files on every pipeline run.
+
 ## Package structure and publishing
 
 Runtime Python modules and JSON resources live in `src/mne_nodes_simple_functions/`.
