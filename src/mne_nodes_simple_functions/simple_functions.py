@@ -98,7 +98,7 @@ def compute_evoked(epochs, condition: str | None = None):
         evoked = epochs[condition].average()
     return evoked
 
-def plot_evoked(evoked):
+def plot_evokeds(evoked):
     fig = evoked.plot()
     return fig
 

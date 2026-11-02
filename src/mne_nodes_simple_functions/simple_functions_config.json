@@ -331,7 +331,7 @@
         "class_name": null,
         "uses_freesurfer": false
     },
-    "plot_evoked": {
+    "plot_evokeds": {
         "inputs": {
             "evoked": {
                 "accepted_ports": [
