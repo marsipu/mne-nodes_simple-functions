@@ -26,7 +26,7 @@ def filter_raw(raw, l_freq=None, h_freq=None):
     raw : mne.io.Raw
         The filtered raw data.
     """
-    raw = raw.filter(l_freq=l_freq, h_freq=h_freq)
+    raw = raw.filter(l_freq=l_freq, h_freq=h_freq, n_jobs=-1)
     return raw
 
 def get_events(raw):
@@ -104,12 +104,12 @@ def plot_evokeds(evoked):
 
 def make_noise_covariance_raw(raw):
     from mne import compute_raw_covariance
-    noise_cov = compute_raw_covariance(raw)
+    noise_cov = compute_raw_covariance(raw, n_jobs=-1)
     return noise_cov
 
 def make_noise_covariance_epochs(epochs):
     from mne import compute_covariance
-    noise_cov = compute_covariance(epochs)
+    noise_cov = compute_covariance(epochs, n_jobs=-1)
     return noise_cov
 
 def get_forward_solution(info, trans, subject):
@@ -121,7 +121,7 @@ def get_forward_solution(info, trans, subject):
         setup_source_space,
     )
 
-    src = setup_source_space(subject)
+    src = setup_source_space(subject, n_jobs=-1)
     bem_model = make_bem_model(subject)
     bem_solution = make_bem_solution(bem_model)
     fwd = make_forward_solution(info, trans, src, bem_solution)
