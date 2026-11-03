@@ -248,7 +248,7 @@
         "description": "",
         "module_name": null,
         "class_name": null,
-        "uses_freesurfer": true
+        "uses_freesurfer": false
     },
     "get_inverse_operator": {
         "inputs": {
